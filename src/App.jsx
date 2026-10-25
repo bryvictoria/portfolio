@@ -1,10 +1,10 @@
 import { createElement } from 'react'
 import {
   ArrowRight,
-  BriefcaseBusiness,
   Code2,
   Database,
   ExternalLink,
+  GraduationCap,
   Link2,
   Mail,
   MapPin,
@@ -13,63 +13,48 @@ import {
 } from 'lucide-react'
 import './App.css'
 
-const projects = [
+const caseStudies = [
   {
-    name: 'WebRIS · Radiology Information System',
-    description: 'A patient-first RIS with registration, scheduling, worklists, and integrated image viewing.',
-    tags: ['Laravel', 'Vue.js', 'MySQL', 'DICOM'],
-    image: 'photo-1579684385127-1ef15d508118',
-    tone: 'blue',
+    number: '01',
+    category: 'Radiology · Multi-branch systems',
+    name: 'WebRIS & teleradiology',
+    description: 'A multi-branch Radiology Information System covering the full order lifecycle, from patient registration and scheduling through radtech QA and radiologist reporting.',
+    outcomes: [
+      'Designed teleradiology transfers using an OAuth2-secured REST API and DICOM C-MOVE, with retry handling and result retrieval.',
+      'Implemented role-based, multi-branch access and repeatable client deployments with Docker Compose and GitLab CI/CD.',
+    ],
+    tags: ['Laravel', 'Vue 3', 'Inertia.js', 'MySQL', 'DICOM', 'OAuth2'],
   },
   {
+    number: '02',
+    category: 'Medical imaging · WebGL',
     name: 'WebRIS DICOM Viewer',
-    description: 'A browser-based DICOM viewer with MPR, cine playback, and annotation tools.',
-    tags: ['Vue.js', 'Cornerstone.js', 'Laravel'],
-    image: 'photo-1559757175-0eb30cd8c063',
-    tone: 'slate',
+    description: 'An in-browser imaging viewer embedded in the RIS, built for diagnostic workflows and studies from multiple imaging sources.',
+    outcomes: [
+      'Built multiplanar reconstruction, cine playback for multi-frame and ultrasound studies, and custom annotation tools with Cornerstone.js.',
+      'Engineered a Laravel proxy to stream DICOM frames from DCM4CHEE PACS and patch incomplete metadata such as pixel spacing and VOI LUT.',
+    ],
+    tags: ['Vue 3', 'Cornerstone.js', 'WebGL', 'Laravel', 'DCM4CHEE'],
   },
   {
+    number: '03',
+    category: 'Identity · Enterprise SSO',
     name: 'IAMServer & IAMCMS',
-    description: 'OIDC-compliant authentication server and client management system for enterprise SSO.',
-    tags: ['Laravel', 'Vue.js', 'MySQL'],
-    image: 'photo-1451187580459-43490279c0fa',
-    tone: 'sky',
+    description: 'An OIDC-compliant authentication and authorization server paired with a client-management application for enterprise SSO.',
+    outcomes: [
+      'Built a central identity service for enterprise integrations using Laravel and MySQL.',
+      'Developed a Vue single-page application for user, role, and access management integrated with IAMServer.',
+    ],
+    tags: ['Laravel', 'OIDC', 'MySQL', 'Vue.js'],
   },
-  {
-    name: 'WebBIS · Blood Bank Information System',
-    description: 'Donor profiling, inventory tracking, and cross-matching integrated with iKnowu.',
-    tags: ['CakePHP', 'jQuery', 'MySQL'],
-    image: 'photo-1576091160399-112ba8d25d1d',
-    tone: 'red',
-  },
-  {
-    name: 'OnlineCIF · COVID-19 Information Form',
-    description: 'Data collection and reporting platform for COVID-19, built to make public health data easier to act on.',
-    tags: ['Laravel', 'Vue.js', 'MySQL'],
-    image: 'photo-1584982751601-97dcc096659c',
-    tone: 'cream',
-  },
-  {
-    name: 'iKnowu · Fingerprint Biometrics System',
-    description: 'Biometric identity management with cross-institution deployment and Java applet integration.',
-    tags: ['Java', 'Spring Boot', 'MySQL'],
-    image: 'photo-1614064641938-3bbee52942c7',
-    tone: 'mint',
-  },
-  {
-    name: 'Autonomous Snake · Personal Project',
-    description: 'Pathfinding AI using BFS, DFS, and performance-optimized heuristics.',
-    tags: ['JavaScript', 'HTML5 Canvas'],
-    image: 'photo-1511512578047-dfb367046420',
-    tone: 'green',
-  },
-  {
-    name: 'Other Systems',
-    description: 'Messaging gateways, WebShop, mobile applications, and internal tools.',
-    tags: ['Java', 'PHP', 'MySQL'],
-    image: 'photo-1518770660439-4636190af475',
-    tone: 'dark',
-  },
+]
+
+const otherProjects = [
+  ['MSGS · SMS Gateway', 'Spring Boot notification platform with user management.', 'Java · Spring Security · PostgreSQL · Angular 6'],
+  ['OnlineCIF & laboratory results', 'COVID-19 data collection and reporting, plus a laboratory app for managing and reporting patient results.', 'CakePHP · Laravel API · Vue.js · MySQL'],
+  ['iKnowU · Fingerprint biometrics', 'Cross-institution biometric identity with Java Applet client integration.', 'Java · Spring Boot · Hibernate · JavaFX'],
+  ['WebBBIS · Blood bank', 'Donor profiling, inventory tracking, and cross-matching integrated with iKnowU.', 'CakePHP · MySQL · jQuery'],
+  ['WebHistopath · Histopathology', 'A histopathology information system for healthcare workflows.', 'CakePHP · MySQL · jQuery'],
 ]
 
 const skills = [
@@ -81,7 +66,7 @@ const skills = [
   {
     title: 'Databases',
     icon: Database,
-    items: 'SQL Server · PostgreSQL · MongoDB · MySQL · Redis',
+    items: 'MS SQL Server · PostgreSQL · MongoDB · MySQL',
   },
   {
     title: 'Integration & APIs',
@@ -101,6 +86,7 @@ const navItems = [
   ['Projects', 'projects'],
   ['Experience', 'experience'],
   ['Skills', 'skills'],
+  ['Education', 'education'],
   ['Contact', 'contact'],
 ]
 
@@ -127,6 +113,7 @@ function App() {
             <span><MapPin size={14} />Quezon City, Philippines</span>
           </div>
           <a className="github-link" href="https://github.com/bryvictoria" target="_blank" rel="noreferrer"><Code2 size={15} />github.com/bryvictoria <ExternalLink size={11} /></a>
+          <a className="resume-link" href="/Bryan_Victoria_Resume.pdf" target="_blank" rel="noreferrer">View resume <ExternalLink size={12} /></a>
         </div>
       </section>
 
@@ -134,7 +121,7 @@ function App() {
         <div className="page-width intro-grid">
           <div className="about-copy section-rule">
             <h2>About Me</h2>
-            <p>Full-stack developer and technical lead with 14+ years of experience across the full software development lifecycle, from system architecture and implementation to deployment and long-term maintenance. Specializes in enterprise and healthcare information systems: radiology, laboratory, blood bank, biometric identity, and telemedicine. Experienced in OAuth2/OIDC authentication infrastructure, teleradiology, DICOM/PACS integrations, and CI/CD-driven deployment pipelines across multi-branch client sites.</p>
+            <p>Full-stack developer and technical lead with 15+ years of experience across the software development lifecycle, from system architecture and implementation to deployment and long-term maintenance. Specializes in healthcare and enterprise systems for radiology, laboratory, blood bank, and biometric identity workflows. Experienced in OAuth2/OIDC authentication, teleradiology, DICOM/PACS integrations, and CI/CD deployments across multi-branch client sites.</p>
           </div>
           <div className="skills-panel section-rule" id="skills">
             <h2>Technical Skills</h2>
@@ -154,23 +141,32 @@ function App() {
         <div className="page-width">
           <div className="section-heading">
             <h2>Featured Projects</h2>
-            <p>Selected projects from my professional experience and personal work.</p>
+            <p>Selected systems I designed and built for healthcare and enterprise workflows.</p>
           </div>
           <div className="project-grid">
-            {projects.map((project, index) => (
+            {caseStudies.map((project) => (
               <article className="project-card" key={project.name}>
-                <div className={`project-image ${project.tone}`}>
-                  <img src={`https://images.unsplash.com/${project.image}?auto=format&fit=crop&w=900&q=80`} alt="" loading={index > 3 ? 'lazy' : 'eager'} />
-                  <span className="project-index">0{index + 1}</span>
-                </div>
                 <div className="project-body">
+                  <p className="project-category"><span>{project.number}</span>{project.category}</p>
                   <h3>{project.name}</h3>
                   <p>{project.description}</p>
+                  <ul className="case-outcomes">{project.outcomes.map((outcome) => <li key={outcome}>{outcome}</li>)}</ul>
                   <div className="tags">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
-                  <a className="details-link" href="mailto:victoria.bryan.dejesus@gmail.com?subject=Project%20inquiry">View Details <ArrowRight size={13} /></a>
                 </div>
               </article>
             ))}
+          </div>
+          <div className="other-work">
+            <h3>Other systems</h3>
+            <div className="other-work-grid">
+              {otherProjects.map(([name, description, stack]) => (
+                <article className="other-work-item" key={name}>
+                  <h4>{name}</h4>
+                  <p>{description}</p>
+                  <span>{stack}</span>
+                </article>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -182,34 +178,51 @@ function App() {
             <div className="experience-content">
               <div className="role-copy">
                 <h3>IT Easy Software Solutions Inc.</h3>
-                <p className="role-title">Core & Data Manager (Full-Stack Developer / Tech Lead)</p>
+                <p className="role-title">Core & Dev. Manager (Full-Stack Developer / Tech Lead)</p>
                 <p className="role-date">April 2012 – Present</p>
-                <p>Design and develop full-stack software solutions for healthcare, most of which are actively used across hospitals and health organizations. Lead client-side deployments, technical support, and on-site training.</p>
+                <p>Design and build healthcare software used across hospitals and health organizations. Lead client deployments, technical support, and on-site training.</p>
               </div>
-              <ul className="project-list">
-                {projects.slice(0, 6).map((project) => <li key={project.name}>{project.name}</li>)}
-                <li>WebBIS · Blood Bank Information System</li>
-                <li>WebShop · Hospital e-commerce System</li>
-              </ul>
+              <div className="earlier-role">
+                <h3>SYSNET, IDEAWURX Inc.</h3>
+                <p className="role-title">Web Programmer</p>
+                <p className="role-date">May 2011 – April 2012</p>
+                <p>Developed CMS platforms for CallMyName, LottoCell, SNMPMonitoringSystem, and MMDASystem.</p>
+              </div>
             </div>
           </div>
           <aside className="personal-project section-rule">
             <h2>Personal Projects</h2>
             <h3>Autonomous Snake</h3>
-            <p>Pathfinding AI with A*, BFS, DFS and performance optimization.</p>
-            <a href="#projects">View All Projects <ArrowRight size={13} /></a>
+            <p>Built from scratch in JavaScript and Canvas. A layered pathfinding strategy escalates from greedy hunting to survival fallbacks, with a Hamiltonian cycle mode.</p>
+            <div className="snake-metrics">
+              <div><strong>5–10×</strong><span>faster search</span></div>
+              <div><strong>60–78%</strong><span>survival across 5 board sizes</span></div>
+            </div>
+            <p className="snake-detail">At 10,000 nodes: BFS improved from 25 ms to 2.4 ms; A* from 30 ms to 5 ms, using integer-keyed typed arrays and pre-allocated structures.</p>
+            <a href="https://github.com/bryvictoria" target="_blank" rel="noreferrer">GitHub profile <ExternalLink size={12} /></a>
           </aside>
+        </div>
+      </section>
+
+      <section className="education-section" id="education">
+        <div className="page-width education-inner">
+          <GraduationCap className="education-icon" size={22} />
+          <div>
+            <h2>Education</h2>
+            <h3>Bachelor of Science in Information Technology</h3>
+            <p>Major in System Development · Central Luzon State University · 2007–2011</p>
+            <p className="education-honors">DOST-SEI Undergraduate Scholar · Dean’s Lister, College of Arts and Science</p>
+          </div>
         </div>
       </section>
 
       <footer className="site-footer">
         <div className="page-width footer-inner">
           <a className="wordmark" href="#home">Bryan <span>Victoria</span></a>
-          <p>Full-Stack Developer / Tech Lead <i /> 14+ Years Experience</p>
+          <p>Full-Stack Developer / Tech Lead <i /> 15+ Years Experience</p>
           <div className="footer-links">
             <a href="https://github.com/bryvictoria" aria-label="GitHub"><Code2 size={17} /></a>
             <a href="mailto:victoria.bryan.dejesus@gmail.com" aria-label="Email"><Mail size={17} /></a>
-            <a href="https://www.linkedin.com/" aria-label="LinkedIn"><BriefcaseBusiness size={17} /></a>
           </div>
           <a className="footer-contact" href="mailto:victoria.bryan.dejesus@gmail.com">Let's work together <ArrowRight size={13} /></a>
         </div>
