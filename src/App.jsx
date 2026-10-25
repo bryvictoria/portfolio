@@ -250,11 +250,10 @@ function App() {
           <div className="website-grid">
             <article className="website-card">
               <div className="website-preview clinic-site-preview">
-                <iframe
-                  src="https://tohwebsite.vercel.app/"
-                  title="Tree of Health Diagnostic & Imaging Clinic live preview"
+                <img
+                  src="/tree-of-health-preview.png"
+                  alt="Screenshot of the Tree of Health Diagnostic & Imaging Clinic website"
                   loading="lazy"
-                  referrerPolicy="strict-origin-when-cross-origin"
                 />
               </div>
               <div className="website-body">
@@ -273,12 +272,11 @@ function App() {
 
             <article className="website-card">
               <div className="website-preview property-preview">
-                <div className="property-preview-content">
-                  <span className="property-preview-brand">MilyanLease</span>
-                  <span className="property-preview-label">YOUR NEXT CHAPTER STARTS HERE</span>
-                  <p>Find a place that feels like home.</p>
-                  <span className="property-preview-status">Explore available homes&nbsp; →</span>
-                </div>
+                <img
+                  src="/milyanlease-preview.png"
+                  alt="Screenshot of the MilyanLease rental homes website"
+                  loading="lazy"
+                />
               </div>
               <div className="website-body">
                 <p className="website-category">Rental homes</p>
