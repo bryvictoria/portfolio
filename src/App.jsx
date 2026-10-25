@@ -1,6 +1,8 @@
-import { createElement } from 'react'
+import { createElement, useState } from 'react'
 import {
   ArrowRight,
+  ChevronLeft,
+  ChevronRight,
   Code2,
   Database,
   ExternalLink,
@@ -11,6 +13,14 @@ import {
   Phone,
   Settings,
 } from 'lucide-react'
+import dicomChest from './assets/images/dicom-viewer-chest.png'
+import dicomMpr from './assets/images/dicom-viewer-ct-mpr (1).png'
+import iknowuScreenshot from './assets/images/iknowu.png'
+import webbbisDashboard from './assets/images/webbbis-donation-dashboard.png'
+import webRisFrontdesk from './assets/images/webris-frontdesk.png'
+import webRisRadtech from './assets/images/webris-radtech.png'
+import webRisResultList from './assets/images/webris-result-list.png'
+import webRisResult from './assets/images/webris-result.png'
 import './App.css'
 
 const caseStudies = [
@@ -23,6 +33,12 @@ const caseStudies = [
       'Designed teleradiology transfers using an OAuth2-secured REST API and DICOM C-MOVE, with retry handling and result retrieval.',
       'Implemented role-based, multi-branch access and repeatable client deployments with Docker Compose and GitLab CI/CD.',
     ],
+    screenshots: [
+      { src: webRisFrontdesk, alt: 'WebRIS front desk dashboard' },
+      { src: webRisRadtech, alt: 'WebRIS radiology technician worklist' },
+      { src: webRisResultList, alt: 'WebRIS radiology results list' },
+      { src: webRisResult, alt: 'WebRIS radiology result details' },
+    ],
     tags: ['Laravel', 'Vue 3', 'Inertia.js', 'MySQL', 'DICOM', 'OAuth2'],
   },
   {
@@ -34,26 +50,33 @@ const caseStudies = [
       'Built multiplanar reconstruction, cine playback for multi-frame and ultrasound studies, and custom annotation tools with Cornerstone.js.',
       'Engineered a Laravel proxy to stream DICOM frames from DCM4CHEE PACS and patch incomplete metadata such as pixel spacing and VOI LUT.',
     ],
+    screenshots: [
+      { src: dicomChest, alt: 'DICOM viewer chest imaging study' },
+      { src: dicomMpr, alt: 'DICOM viewer multiplanar CT study' },
+    ],
     tags: ['Vue 3', 'Cornerstone.js', 'WebGL', 'Laravel', 'DCM4CHEE'],
   },
   {
     number: '03',
-    category: 'Identity · Enterprise SSO',
-    name: 'IAMServer & IAMCMS',
-    description: 'An OIDC-compliant authentication and authorization server paired with a client-management application for enterprise SSO.',
+    category: 'Biometrics · Cross-institution identity',
+    name: 'IKnowU · Fingerprint Biometrics System',
+    description: 'A biometric identity system designed for deployment across institutions, with Java Applet-based client integration.',
     outcomes: [
-      'Built a central identity service for enterprise integrations using Laravel and MySQL.',
-      'Developed a Vue single-page application for user, role, and access management integrated with IAMServer.',
+      'Designed and implemented identity workflows using Spring Boot, Spring Security, and Hibernate.',
+      'Integrated fingerprint capture through a Java Applet client and JavaFX application.',
     ],
-    tags: ['Laravel', 'OIDC', 'MySQL', 'Vue.js'],
+    screenshots: [
+      { src: iknowuScreenshot, alt: 'IKnowU fingerprint biometrics application' },
+    ],
+    tags: ['Java', 'Spring Boot', 'Spring Security', 'Hibernate', 'MySQL', 'JavaFX'],
   },
 ]
 
 const otherProjects = [
+  ['IAMServer & IAMCMS', 'OIDC-compliant enterprise authentication with a client-management app for users, roles, and access.', 'Laravel · MySQL · Vue.js · OIDC'],
   ['MSGS · SMS Gateway', 'Spring Boot notification platform with user management.', 'Java · Spring Security · PostgreSQL · Angular 6'],
   ['OnlineCIF & laboratory results', 'COVID-19 data collection and reporting, plus a laboratory app for managing and reporting patient results.', 'CakePHP · Laravel API · Vue.js · MySQL'],
-  ['iKnowU · Fingerprint biometrics', 'Cross-institution biometric identity with Java Applet client integration.', 'Java · Spring Boot · Hibernate · JavaFX'],
-  ['WebBBIS · Blood bank', 'Donor profiling, inventory tracking, and cross-matching integrated with iKnowU.', 'CakePHP · MySQL · jQuery'],
+  ['WebBBIS · Blood bank', 'Donor profiling, inventory tracking, and cross-matching integrated with IKnowU.', 'CakePHP · MySQL · jQuery', webbbisDashboard],
   ['WebHistopath · Histopathology', 'A histopathology information system for healthcare workflows.', 'CakePHP · MySQL · jQuery'],
 ]
 
@@ -89,6 +112,52 @@ const navItems = [
   ['Education', 'education'],
   ['Contact', 'contact'],
 ]
+
+function ProjectGallery({ projectName, screenshots, compact = false }) {
+  const [activeIndex, setActiveIndex] = useState(0)
+  const activeScreenshot = screenshots[activeIndex]
+  const hasMultiple = screenshots.length > 1
+
+  const showScreenshot = (index) => {
+    setActiveIndex((index + screenshots.length) % screenshots.length)
+  }
+
+  return (
+    <div className={`project-gallery${compact ? ' compact' : ''}`}>
+      <div className="gallery-frame">
+        <img src={activeScreenshot.src} alt={activeScreenshot.alt} />
+        {hasMultiple && (
+          <>
+            <button className="gallery-arrow previous" type="button" aria-label={`Previous ${projectName} screenshot`} onClick={() => showScreenshot(activeIndex - 1)}>
+              <ChevronLeft size={18} />
+            </button>
+            <button className="gallery-arrow next" type="button" aria-label={`Next ${projectName} screenshot`} onClick={() => showScreenshot(activeIndex + 1)}>
+              <ChevronRight size={18} />
+            </button>
+            <span className="gallery-count" aria-live="polite">{activeIndex + 1} / {screenshots.length}</span>
+          </>
+        )}
+      </div>
+      {hasMultiple && (
+        <div className="gallery-caption-row">
+          <span className="gallery-caption">{activeScreenshot.alt}</span>
+          <div className="gallery-dots" role="group" aria-label={`${projectName} screenshots`}>
+            {screenshots.map((screenshot, index) => (
+              <button
+                className={index === activeIndex ? 'active' : ''}
+                type="button"
+                key={screenshot.src}
+                aria-label={`Show screenshot ${index + 1}: ${screenshot.alt}`}
+                aria-pressed={index === activeIndex}
+                onClick={() => showScreenshot(index)}
+              />
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}
 
 function App() {
   return (
@@ -146,6 +215,7 @@ function App() {
           <div className="project-grid">
             {caseStudies.map((project) => (
               <article className="project-card" key={project.name}>
+                <ProjectGallery projectName={project.name} screenshots={project.screenshots} />
                 <div className="project-body">
                   <p className="project-category"><span>{project.number}</span>{project.category}</p>
                   <h3>{project.name}</h3>
@@ -159,8 +229,9 @@ function App() {
           <div className="other-work">
             <h3>Other systems</h3>
             <div className="other-work-grid">
-              {otherProjects.map(([name, description, stack]) => (
+              {otherProjects.map(([name, description, stack, screenshot]) => (
                 <article className="other-work-item" key={name}>
+                  {screenshot && <ProjectGallery projectName={name} screenshots={[{ src: screenshot, alt: 'WebBBIS blood bank donation dashboard' }]} compact />}
                   <h4>{name}</h4>
                   <p>{description}</p>
                   <span>{stack}</span>
