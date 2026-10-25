@@ -245,7 +245,7 @@ function App() {
         <div className="page-width">
           <div className="section-heading">
             <h2 id="websites-heading">Featured Websites</h2>
-            <p>Client websites built for healthcare and property discovery.</p>
+            <p>Client websites built for healthcare and rental home discovery.</p>
           </div>
           <div className="website-grid">
             <article className="website-card">
@@ -274,19 +274,20 @@ function App() {
             <article className="website-card">
               <div className="website-preview property-preview">
                 <div className="property-preview-content">
-                  <span className="property-preview-label">REAL ESTATE · AGENCY WEBSITE</span>
-                  <p>Property listings and agency profile</p>
-                  <span className="property-preview-status">Preview coming soon</span>
+                  <span className="property-preview-brand">MilyanLease</span>
+                  <span className="property-preview-label">YOUR NEXT CHAPTER STARTS HERE</span>
+                  <p>Find a place that feels like home.</p>
+                  <span className="property-preview-status">Explore available homes&nbsp; →</span>
                 </div>
               </div>
               <div className="website-body">
-                <p className="website-category">Real estate website</p>
-                <h3>Agency property listings</h3>
-                <p>A website for one real estate agency where prospective tenants can browse available units and learn about the agency.</p>
+                <p className="website-category">Rental homes</p>
+                <h3>MilyanLease</h3>
+                <p>A rental-home discovery website showcasing thoughtfully managed homes and helping renters find a place that feels like home.</p>
                 <div className="website-meta">
-                  <span>Project type</span><strong>Real estate website</strong>
+                  <span>Project type</span><strong>Property rental website</strong>
                 </div>
-                <div className="website-link website-link-pending" aria-label="Live preview coming soon">Live preview coming soon</div>
+                <a className="website-link" href="https://milyanlease.vercel.app/" target="_blank" rel="noreferrer">Visit live website <ExternalLink size={14} /></a>
               </div>
             </article>
           </div>
