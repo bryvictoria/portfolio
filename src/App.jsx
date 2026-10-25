@@ -16,7 +16,6 @@ import {
 import dicomChest from './assets/images/dicom-viewer-chest.png'
 import dicomMpr from './assets/images/dicom-viewer-ct-mpr (1).png'
 import iknowuScreenshot from './assets/images/iknowu.png'
-import webbbisDashboard from './assets/images/webbbis-donation-dashboard.png'
 import webRisFrontdesk from './assets/images/webris-frontdesk.png'
 import webRisRadtech from './assets/images/webris-radtech.png'
 import webRisResultList from './assets/images/webris-result-list.png'
@@ -76,7 +75,7 @@ const otherProjects = [
   ['IAMServer & IAMCMS', 'OIDC-compliant enterprise authentication with a client-management app for users, roles, and access.', 'Laravel · MySQL · Vue.js · OIDC'],
   ['MSGS · SMS Gateway', 'Spring Boot notification platform with user management.', 'Java · Spring Security · PostgreSQL · Angular 6'],
   ['OnlineCIF & laboratory results', 'COVID-19 data collection and reporting, plus a laboratory app for managing and reporting patient results.', 'CakePHP · Laravel API · Vue.js · MySQL'],
-  ['WebBBIS · Blood bank', 'Donor profiling, inventory tracking, and cross-matching integrated with IKnowU.', 'CakePHP · MySQL · jQuery', webbbisDashboard],
+  ['WebBBIS · Blood bank', 'Donor profiling, inventory tracking, and cross-matching integrated with IKnowU.', 'CakePHP · MySQL · jQuery'],
   ['WebHistopath · Histopathology', 'A histopathology information system for healthcare workflows.', 'CakePHP · MySQL · jQuery'],
 ]
 
@@ -238,6 +237,58 @@ function App() {
                 </article>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="featured-websites-section" id="websites" aria-labelledby="websites-heading">
+        <div className="page-width">
+          <div className="section-heading">
+            <h2 id="websites-heading">Featured Websites</h2>
+            <p>Client websites built for healthcare and property discovery.</p>
+          </div>
+          <div className="website-grid">
+            <article className="website-card">
+              <div className="website-preview clinic-site-preview">
+                <iframe
+                  src="https://tohwebsite.vercel.app/"
+                  title="Tree of Health Diagnostic & Imaging Clinic live preview"
+                  loading="lazy"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                />
+              </div>
+              <div className="website-body">
+                <p className="website-category">Healthcare website</p>
+                <h3>Tree of Health Diagnostic &amp; Imaging Clinic</h3>
+                <p>A responsive website for a diagnostic clinic in Balagtas, Bulacan, presenting laboratory and imaging services, clinic information, and location details. Patients can also request appointments online.</p>
+                <div className="website-meta">
+                  <span>Project type</span><strong>Healthcare website</strong>
+                </div>
+                <div className="tags">
+                  {['Laravel', 'Vue.js', 'PHP', 'JavaScript', 'HTML', 'CSS'].map((tag) => <span key={tag}>{tag}</span>)}
+                </div>
+                <a className="website-link" href="https://tohwebsite.vercel.app/" target="_blank" rel="noreferrer">Visit live website <ExternalLink size={14} /></a>
+              </div>
+            </article>
+
+            <article className="website-card">
+              <div className="website-preview property-preview">
+                <div className="property-preview-content">
+                  <span className="property-preview-label">REAL ESTATE · AGENCY WEBSITE</span>
+                  <p>Property listings and agency profile</p>
+                  <span className="property-preview-status">Preview coming soon</span>
+                </div>
+              </div>
+              <div className="website-body">
+                <p className="website-category">Real estate website</p>
+                <h3>Agency property listings</h3>
+                <p>A website for one real estate agency where prospective tenants can browse available units and learn about the agency.</p>
+                <div className="website-meta">
+                  <span>Project type</span><strong>Real estate website</strong>
+                </div>
+                <div className="website-link website-link-pending" aria-label="Live preview coming soon">Live preview coming soon</div>
+              </div>
+            </article>
           </div>
         </div>
       </section>
