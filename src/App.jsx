@@ -6,7 +6,6 @@ import {
   Code2,
   Database,
   ExternalLink,
-  GraduationCap,
   Link2,
   Mail,
   MapPin,
@@ -106,9 +105,8 @@ const navItems = [
   ['Home', 'home'],
   ['About', 'about'],
   ['Projects', 'projects'],
-  ['Experience', 'experience'],
+  ['Personal Projects', 'personal-projects'],
   ['Skills', 'skills'],
-  ['Education', 'education'],
   ['Contact', 'contact'],
 ]
 
@@ -292,25 +290,8 @@ function App() {
         </div>
       </section>
 
-      <section className="experience-section" id="experience">
-        <div className="page-width experience-grid">
-          <div className="experience-main section-rule">
-            <h2>Professional Experience</h2>
-            <div className="experience-content">
-              <div className="role-copy">
-                <h3>IT Easy Software Solutions Inc.</h3>
-                <p className="role-title">Core & Dev. Manager (Full-Stack Developer / Tech Lead)</p>
-                <p className="role-date">April 2012 – Present</p>
-                <p>Design and build healthcare software used across hospitals and health organizations. Lead client deployments, technical support, and on-site training.</p>
-              </div>
-              <div className="earlier-role">
-                <h3>SYSNET, IDEAWURX Inc.</h3>
-                <p className="role-title">Web Programmer</p>
-                <p className="role-date">May 2011 – April 2012</p>
-                <p>Developed CMS platforms for CallMyName, LottoCell, SNMPMonitoringSystem, and MMDASystem.</p>
-              </div>
-            </div>
-          </div>
+      <section className="personal-projects-section" id="personal-projects">
+        <div className="page-width">
           <aside className="personal-project section-rule">
             <h2>Personal Projects</h2>
             <h3>Autonomous Snake</h3>
@@ -322,18 +303,6 @@ function App() {
             <p className="snake-detail">At 10,000 nodes: BFS improved from 25 ms to 2.4 ms; A* from 30 ms to 5 ms, using integer-keyed typed arrays and pre-allocated structures.</p>
             <a href="https://github.com/bryvictoria" target="_blank" rel="noreferrer">GitHub profile <ExternalLink size={12} /></a>
           </aside>
-        </div>
-      </section>
-
-      <section className="education-section" id="education">
-        <div className="page-width education-inner">
-          <GraduationCap className="education-icon" size={22} />
-          <div>
-            <h2>Education</h2>
-            <h3>Bachelor of Science in Information Technology</h3>
-            <p>Major in System Development · Central Luzon State University · 2007–2011</p>
-            <p className="education-honors">DOST-SEI Undergraduate Scholar · Dean’s Lister, College of Arts and Science</p>
-          </div>
         </div>
       </section>
 

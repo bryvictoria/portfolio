@@ -1,6 +1,6 @@
 #root { min-height: 100vh; }
 .page-width { width: min(1120px, calc(100% - 64px)); margin-inline: auto; }
-.hero { position: relative; min-height: 320px; color: #f5f8fc; overflow: hidden; background: #111b24 url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=2000&q=85') center 53% / cover no-repeat; }
+.hero { position: relative; min-height: 320px; color: #f5f8fc; overflow: hidden; background: #111b24 url('./assets/images/background.jpg') center 53% / cover no-repeat; }
 .hero-shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(11, 19, 27, .98) 0%, rgba(11, 19, 27, .91) 35%, rgba(11, 19, 27, .48) 68%, rgba(11, 19, 27, .2) 100%), linear-gradient(0deg, rgba(11, 19, 27, .35), transparent 50%); }
 .site-header, .hero-content { position: relative; z-index: 1; }
 .site-header { height: 58px; display: flex; align-items: center; justify-content: space-between; }
@@ -92,18 +92,8 @@
 .website-link svg { transition: transform .18s ease; }
 .website-link:hover svg { transform: translate(2px, -2px); }
 .website-link-pending { color: #758393; font-weight: 500; }
-.experience-section { padding: 23px 0 27px; background: #fff; }
-.experience-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 30px; }
-.experience-main { padding-right: 26px; border-right: 1px solid var(--line); }
-.experience-content { display: grid; grid-template-columns: 1fr 1.05fr; gap: 28px; padding-top: 1px; }
-.role-copy h3, .earlier-role h3, .personal-project h3 { margin: 0 0 3px; font-size: 10.5px; font-weight: 700; }
-.role-copy p { margin: 0; color: #607083; font-size: 9.4px; line-height: 1.55; }
-.earlier-role p { margin: 0; color: #607083; font-size: 9.4px; line-height: 1.55; }
-.role-copy .role-title { color: #47596b; }
-.earlier-role .role-title { color: #47596b; }
-.role-copy .role-date { margin: 2px 0 7px; color: #8793a0; font-size: 8.8px; }
-.earlier-role .role-date { margin: 2px 0 7px; color: #8793a0; font-size: 8.8px; }
-.personal-project h3 { margin-top: 1px; }
+.personal-projects-section { padding: 22px 0; background: #f2f5f7; }
+.personal-project h3 { margin: 1px 0 3px; font-size: 10.5px; font-weight: 700; }
 .personal-project > p { margin: 5px 0 11px; color: #607083; font-size: 9.4px; line-height: 1.55; }
 .personal-project > a { display: inline-flex; align-items: center; gap: 6px; color: #187de0; font-size: 9px; font-weight: 600; }
 .snake-metrics { display: flex; flex-wrap: wrap; gap: 10px 22px; margin: 13px 0; }
@@ -111,13 +101,6 @@
 .snake-metrics strong { color: #187de0; font-size: 19px; line-height: 1; }
 .snake-metrics span { color: #718092; font-size: 8px; }
 .personal-project > .snake-detail { margin-top: 0; font-size: 8.8px; }
-.education-section { padding: 22px 0; background: #f2f5f7; }
-.education-inner { display: flex; align-items: flex-start; gap: 14px; }
-.education-icon { flex: 0 0 auto; color: #187de0; }
-.education-inner h2 { margin: 0 0 9px; color: var(--ink); font-size: 14px; }
-.education-inner h3 { margin: 0 0 3px; color: #29394a; font-size: 11px; }
-.education-inner p { margin: 0; color: #607083; font-size: 9.5px; line-height: 1.6; }
-.education-inner .education-honors { margin-top: 4px; color: #7a8794; }
 .site-footer { color: #dbe3eb; background: #111c27; }
 .footer-inner { min-height: 59px; display: flex; align-items: center; justify-content: space-between; gap: 18px; }
 .footer-inner .wordmark { font-size: 12px; }
@@ -157,9 +140,6 @@
   .other-work-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .website-grid { gap: 12px; }
   .website-body { min-height: 245px; padding: 14px; }
-  .experience-grid { grid-template-columns: 1fr; gap: 23px; }
-  .experience-main { padding-right: 0; border-right: 0; }
-  .experience-content { grid-template-columns: 1fr 1fr; gap: 16px; }
   .footer-inner { flex-wrap: wrap; padding-block: 16px; }
   .footer-inner > p { order: 3; width: 100%; }
 }
@@ -175,7 +155,6 @@
   .skills-grid { grid-template-columns: 1fr 1fr; gap: 18px 12px; }
   .project-grid { grid-template-columns: 1fr; gap: 10px; }
   .other-work-grid { grid-template-columns: 1fr; }
-  .experience-content { grid-template-columns: 1fr; }
   .footer-links { gap: 10px; }
   .footer-contact { margin-left: auto; }
 }
